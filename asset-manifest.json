@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/css/main.12d022bf.css",
+    "main.js": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/js/main.f54bc847.js",
+    "static/js/787.fc1e5461.chunk.js": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/js/787.fc1e5461.chunk.js",
+    "static/media/logo.jpg": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/media/logo.76cce40bd621dfd492c2.jpg",
+    "index.html": "/AbdulRaufAl-hassan101010.github.io/quizzer/index.html",
+    "main.12d022bf.css.map": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/css/main.12d022bf.css.map",
+    "main.f54bc847.js.map": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/js/main.f54bc847.js.map",
+    "787.fc1e5461.chunk.js.map": "/AbdulRaufAl-hassan101010.github.io/quizzer/static/js/787.fc1e5461.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.12d022bf.css",
+    "static/js/main.f54bc847.js"
+  ]
+}
