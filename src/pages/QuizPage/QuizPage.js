@@ -16,6 +16,7 @@ const QuizPage = () => {
   let [questionNumberState, setQuestionNumberState] = useState(1);
   const [questionState, setQuestionState] = useState("");
   const [answersState, setAnswersState] = useState([]);
+  const [completedState, setCompletedState] = useState(false);
 
   const navigate = useNavigate();
 
@@ -26,19 +27,27 @@ const QuizPage = () => {
   const { answersContext, setAnswersContext } = useContext(AnswersContext);
 
   const answerHandler = (e) => {
-    if (questionNumberState <= 15) {
-      const { answer } = e.target.dataset;
-
-      // add number to answers state array
-      setAnswersState([...answersState, answer]);
-
-      // set current question
-      setQuestionState(questionsState[questionNumberState - 1]);
-    }
+    const { answer } = e.target.dataset;
 
     // increase the question number
-    if (questionNumberState <= 16)
-      setQuestionNumberState(++questionNumberState);
+    if (questionNumberState <= 16) {
+      setQuestionNumberState((questionNumberState += 1));
+    }
+
+    // add number to answers state array
+    setAnswersState([...answersState, answer]);
+
+    // decrease the question number
+    if (questionNumberState === 17) {
+      console.log(questionNumberState);
+      setQuestionNumberState((questionNumberState -= 2));
+      setCompletedState(true);
+    }
+
+    // set current question
+    if (questionNumberState < 15) {
+      setQuestionState(questionsState[questionNumberState - 1]);
+    }
   };
 
   useEffect(() => {
@@ -62,11 +71,14 @@ const QuizPage = () => {
 
   useEffect(() => {
     // if  answered questions are 15 show results
-    if (questionNumberState > 15) return navigate("/results");
+    if (completedState) {
+      return navigate("/results");
+    }
 
     // set context value
     setQuestionsContext(questionsState);
     setAnswersContext(answersState);
+    console.log(answersState);
   }, [
     questionNumberState,
     navigate,
@@ -76,7 +88,7 @@ const QuizPage = () => {
     setQuestionsContext,
   ]);
 
-  // if questions have not been selected from rest api display spinner if it has display question
+  // if questions have not been selected from rest api display spinner if it has display
   return !questionState.question && questionsState.length < 1 ? (
     <Spinner />
   ) : (
